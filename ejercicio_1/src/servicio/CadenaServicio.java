@@ -91,15 +91,20 @@ public class CadenaServicio {
             }
         }
         cadena.setFrase(frase);
-        cadena.setLongitud(cadena.getFrase().length());
+        System.out.println(frase);
     }
     
     public void contiene(Cadena cadena){
         System.out.println("Ingresá la letra");
         boolean contiene = false;
+        int i = 0;
         char letra = entrada.next().charAt(0);
-        for (int i = 0; i < cadena.getLongitud(); i++) {
-            contiene = cadena.getFrase().charAt(i) == letra;
+        while(contiene == false && i < cadena.getLongitud()){
+            if(letra == cadena.getFrase().charAt(i)){
+                contiene = true;
+            }else{ 
+                i++;
+            }
         }
         if(contiene){
             System.out.println("Verdadero");
