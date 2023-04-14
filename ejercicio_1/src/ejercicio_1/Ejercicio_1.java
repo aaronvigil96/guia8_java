@@ -10,21 +10,21 @@
     Método contiene(String letra), deberá comprobar si la frase contiene una letra que ingresa el usuario y devuelve verdadero si la contiene y falso si no.
 */
 package ejercicio_1;
+
 import entidad.Cadena;
-import java.util.Scanner;
 import servicio.CadenaServicio;
 
 public class Ejercicio_1 {
     public static void main(String[] args) {
-        Scanner entrada = new Scanner(System.in);
-        Cadena cadena = new Cadena("Hola como andas");
-        CadenaServicio manejadorCadena = new CadenaServicio();
-        String[] vectorCadena = new String[cadena.getLongitud()];
-       
-        manejadorCadena.mostrarVocales(cadena, vectorCadena);
-        manejadorCadena.invertirFrase(cadena, vectorCadena);
-        manejadorCadena.vecesRepetidas(cadena, vectorCadena, entrada.next());
-        
+        CadenaServicio SC = new CadenaServicio();
+        Cadena cadena = SC.crearFrase();
+        SC.mostrarVocales(cadena);
+        SC.invertirFrase(cadena);
+        SC.vecesRepetidas(cadena);
+        SC.compararLongitud(cadena);
+        SC.unirFrases(cadena);
+        SC.reemplazar(cadena);
+        SC.contiene(cadena);
     }
     
 }

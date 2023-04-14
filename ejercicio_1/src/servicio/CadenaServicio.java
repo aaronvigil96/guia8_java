@@ -14,36 +14,97 @@
 package servicio;
 
 import entidad.Cadena;
+import java.util.Scanner;
 
 public class CadenaServicio {
+    
+    Scanner entrada = new Scanner(System.in);
+    
+    public Cadena crearFrase(){
+        System.out.println("Ingresa la frase");
+        Cadena cadena = new Cadena();
+        cadena.setFrase(entrada.nextLine());
+        cadena.setLongitud(cadena.getFrase().length());
+        return cadena;
+    }
 
-    public void mostrarVocales(Cadena cadena, String[] vector){
+    public void mostrarVocales(Cadena cadena){
+        char letra;
         int contador = 0;
-        String letra;
         for (int i = 0; i < cadena.getLongitud(); i++) {
-            letra = cadena.getFrase().substring(i,i + 1);
-            if(letra.equals("a") || letra.equals("e") || letra.equals("i") || letra.equals("o") || letra.equals("u")){
+            letra = cadena.getFrase().charAt(i);
+            if(letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u'){
                 contador++;
             }
-            vector[i] = letra;
         }
         System.out.println("La cantidad de vocales son: " + contador);
     }
     
-    public void invertirFrase(Cadena cadena, String[] vector){
-        for (int i = cadena.getLongitud(); i > 0; i--) {
-            System.out.print(vector[i - 1]);
+    public void invertirFrase(Cadena cadena){
+        for (int i = cadena.getFrase().length() - 1; i >= 0; i--) {
+            System.out.print(cadena.getFrase().charAt(i));
         }
         System.out.println("");
     }
     
-    public void vecesRepetidas(Cadena cadena, String[] vector,String letra){
+    public void vecesRepetidas(Cadena cadena){
+        System.out.println("Ingresa una letra");
         int contador = 0;
-        for (String vector1 : vector) {
-            if (letra.equals(vector1)) {
+        char letra = entrada.next().charAt(0);
+        for (int i = 0; i < cadena.getLongitud(); i++) {
+            if(letra == cadena.getFrase().charAt(i)){
                 contador++;
             }
         }
-        System.out.println("El caracter " + letra + " se repite: " + contador);
+        System.out.print("La letra se repite " + contador + " veces");
+        System.out.println("");
+    }
+    
+    public void compararLongitud(Cadena cadena){
+        System.out.println("Ingresá la otra frase");
+        entrada.skip("\n");
+        String fraseUsuario = entrada.nextLine();
+        if(fraseUsuario.length() == cadena.getLongitud()){
+            System.out.println("Comparten la misma cantidad de caracteres");
+        }else {
+            System.out.println("No tienen la misma cantidad de caracteres");
+        }
+    }
+    
+    public void unirFrases(Cadena cadena){
+        System.out.println("Ingresa una frase a únir");
+        String fraseUsuario = entrada.nextLine();
+        cadena.setFrase(cadena.getFrase() + fraseUsuario);
+        System.out.println(cadena.getFrase());
+        cadena.setLongitud(cadena.getFrase().length());
+    }
+    
+    public void reemplazar(Cadena cadena){
+        System.out.println("Ingresá la letra que reemplaza la a");
+        String letra = entrada.next().substring(0, 1);
+        String frase = "";
+        for (int i = 0; i < cadena.getLongitud(); i++) {
+            if(cadena.getFrase().charAt(i) == 'a'){
+                frase = frase + letra;
+            }else {
+                frase = frase + cadena.getFrase().charAt(i);
+            }
+        }
+        cadena.setFrase(frase);
+        cadena.setLongitud(cadena.getFrase().length());
+    }
+    
+    public void contiene(Cadena cadena){
+        System.out.println("Ingresá la letra");
+        boolean contiene = false;
+        char letra = entrada.next().charAt(0);
+        for (int i = 0; i < cadena.getLongitud(); i++) {
+            contiene = cadena.getFrase().charAt(i) == letra;
+        }
+        if(contiene){
+            System.out.println("Verdadero");
+        }else{
+            System.out.println("Falso");
+        }
     }
 }
