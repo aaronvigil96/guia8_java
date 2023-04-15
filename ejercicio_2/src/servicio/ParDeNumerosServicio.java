@@ -21,7 +21,19 @@ public class ParDeNumerosServicio {
         System.out.println("numero 2: " + pn.getNumero2());
     }
     
-    public void devolverMayor(ParDeNumeros pn){
-        System.out.println("El numero más alto es: " + Math.max(pn.getNumero1(), pn.getNumero2()));
+    public double devolverMayor(ParDeNumeros pn){
+        return Math.max(pn.getNumero1(), pn.getNumero2());
+    }
+    
+    public double devolverMenor (ParDeNumeros pn){
+        return Math.min(pn.getNumero1(), pn.getNumero2());
+    }
+    
+    public void calcularPotencia(ParDeNumeros pn, double mayor, double menor){
+        System.out.println("La potencia de " + Math.round(mayor) + " es " + Math.pow(Math.round(mayor), Math.round(menor)));
+    }
+    
+    public void calcularRaiz(ParDeNumeros pn, double menor){
+        System.out.println("La raiz cuadrada de " + menor + " es: " + Math.sqrt(Math.round(Math.abs(menor))));
     }
 }

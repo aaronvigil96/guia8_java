@@ -15,7 +15,10 @@ public class Ejercicio_2 {
         ParDeNumerosServicio pns = new ParDeNumerosServicio();
         ParDeNumeros parNumeros = pns.crearParDeNumeros();
         pns.mostrarValores(parNumeros);
-        pns.devolverMayor(parNumeros);
+        double mayor = pns.devolverMayor(parNumeros);
+        double menor = pns.devolverMenor(parNumeros);
+        pns.calcularPotencia(parNumeros, mayor, menor);
+        pns.calcularRaiz(parNumeros, menor);
     }
     
 }
