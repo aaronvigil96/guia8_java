@@ -10,6 +10,37 @@
 */
 package servicio;
 
+import entidad.Curso;
+import java.util.Scanner;
+
 public class CursoService {
     
+    Scanner entrada = new Scanner(System.in);
+    
+    public Curso crearCurso(){
+        Curso curso = new Curso();
+        System.out.println("Nombre del curso: ");
+        curso.setNombreCurso(entrada.next());
+        System.out.println("Ingresá la cantidad de horas por día: ");
+        curso.setCantidadHorasPorDia(entrada.nextInt());
+        System.out.println("Ingresá la cantidad de días por semana: ");
+        curso.setCantidadDiasPorSemana(entrada.nextInt());
+        System.out.println("Ingresá el turno: ");
+        curso.setTurno(entrada.next());
+        System.out.println("Ingresá el precio por hora: ");
+        curso.setPrecioPorHora(entrada.nextInt());
+        cargarAlumno(curso);
+        return curso;
+    }
+    
+    public void cargarAlumno(Curso curso){
+        for (int i = 0; i < curso.getAlumnos().length; i++) {
+            System.out.println("Ingresá el nombre del alumno");
+            curso.getAlumnos()[i] = entrada.next();
+        }
+    }
+    
+    public void calcularGananciaSemanal(Curso curso){
+        System.out.println("La ganancia semanal es: " + (curso.getCantidadHorasPorDia() * curso.getPrecioPorHora() * curso.getAlumnos().length * curso.getCantidadDiasPorSemana()));
+    }
 }

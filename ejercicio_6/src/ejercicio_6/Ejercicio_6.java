@@ -10,10 +10,14 @@
 */
 package ejercicio_6;
 
+import entidad.Curso;
+import servicio.CursoService;
+
 public class Ejercicio_6 {
 
     public static void main(String[] args) {
-        
+        CursoService cs = new CursoService();
+        Curso curso = cs.crearCurso();
+        cs.calcularGananciaSemanal(curso);
     }
-    
 }
