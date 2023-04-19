@@ -24,7 +24,17 @@ public class ArregloService {
     }
     
     public void ordernar(double arreglo[]){
+        double[] numeros = new double[arreglo.length];
+        int contador = 0;
         Arrays.sort(arreglo);
+        for (int i = arreglo.length - 1; i >= 0; i--) {
+            numeros[contador] = arreglo[i];
+            contador++;
+        }
+        for (int i = 0; i < arreglo.length; i++) {
+            arreglo[i] = numeros[i];
+            System.out.println(arreglo[i]);
+        }
     }
     
     public void inicializarB(double arregloA[], double arregloB[]){

@@ -17,7 +17,9 @@ public class Ejercicio_3 {
         ArregloService as = new ArregloService();
         as.inicializarA(arregloA);
         as.mostrar(arregloA);
+        System.out.println("-----");
         as.ordernar(arregloA);
+        System.out.println("-----");
         as.inicializarB(arregloA, arregloB);
         as.mostrar(arregloA);
         as.mostrar(arregloB);
