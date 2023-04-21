@@ -57,13 +57,15 @@ public class AhorcadoService {
     }
     
     public boolean encontradas(Ahorcado ahorcado, String letra){
+        boolean booleanLetra = false;
         for (int i = 0; i < ahorcado.getPalabra().length; i++) {
             if(ahorcado.getPalabra()[i].equals(letra)){
                 ahorcado.getPalabra()[i] = "";
-                return true;
+                ahorcado.setLetrasEncontradas(ahorcado.getLetrasEncontradas() + 1);
+                booleanLetra = true;
             }
         }
-        return false;
+        return booleanLetra;
     }
     
     public int intentos(Ahorcado ahorcado){
@@ -73,15 +75,12 @@ public class AhorcadoService {
     public void juego(){
         String letra;
         Ahorcado ahorcado = crearJuego();
-        String palabra = "";
         
         int longitud = longitud(ahorcado);
         do{
             System.out.println("----------------------------------------------------------");
             letra = buscar(ahorcado);
             if(encontradas(ahorcado, letra)){
-                palabra = palabra + letra;
-                ahorcado.setLetrasEncontradas(ahorcado.getLetrasEncontradas() + 1);
                 System.out.println("letras encontradas: " + ahorcado.getLetrasEncontradas());
             }else {
                 ahorcado.setIntentos(ahorcado.getIntentos() - 1);
@@ -98,6 +97,6 @@ public class AhorcadoService {
         }else {
             System.out.println("No adivinaste, lo siento");
         }
-        System.out.println("La palabra era: " + palabra);
+
     }
 }
